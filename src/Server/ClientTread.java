@@ -1,2 +1,4 @@
-package Server;public class ClientTread {
+package Server;
+
+public class ClientTread {
 }
