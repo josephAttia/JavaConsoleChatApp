@@ -9,8 +9,9 @@ import java.util.ArrayList;
 
 public class ChatServer {
 
-    public static void acceptClients(ServerSocket serverS){
-        ArrayList<ClientTread> clients = new ArrayList<ClientTread>();
+    private static ArrayList<ClientTread> clients;
+
+    public static void acceptClients(ServerSocket serverS, ArrayList<ClientTread> clients){
         while (true){
             try {
                 Socket socket = serverS.accept();
@@ -23,11 +24,17 @@ public class ChatServer {
             }
         }
     }
+
+    public static ArrayList<ClientTread> getClients(){
+        return clients;
+    }
     public static void main(String[] args) {
+        ArrayList<ClientTread> clients = new ArrayList<ClientTread>();
         int port = 4444;
         try {
+            System.out.println("Sucssesfuly Created Server!!");
             ServerSocket serverSocket = new ServerSocket(port);
-            acceptClients(serverSocket);
+            acceptClients(serverSocket, clients);
 
         } catch (IOException e) {
             System.out.println("Cannot Connect to Port " + port);
